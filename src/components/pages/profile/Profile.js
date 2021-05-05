@@ -59,17 +59,14 @@ export default function Profile() {
           <div class="col-md-5 mx-auto">
             <div class="bg-white shadow rounded overflow-hidden">
               <div class="px-4 pt-0 pb-4 cover">
-                <div class="media align-items-end profile-head">
-                  <div class="profile mr-3">
+                <div class="media  align-items-end profile-head">
+                  <div class="profile t mr-3">
                     <img
                       src={user.profileImgFileUrl}
                       alt="..."
                       width="130"
                       class="rounded mb-2 img-thumbnail"
                     />
-                    <a href="#" class="btn btn-outline-dark btn-sm btn-block">
-                      Edit profile
-                    </a>
                   </div>
                   <div class="media-body mb-5 text-white">
                     <h4 class="mt-0 mb-0">{user.name}</h4>
@@ -81,24 +78,24 @@ export default function Profile() {
                   </div>
                 </div>
               </div>
-              <div class="bg-light p-4 d-flex justify-content-end text-center">
-                <ul class="list-inline mb-0">
+              <div class="bg-light p-0 d-flex text-center  justify-content-end ">
+                <ul class="list-inline mb-10">
                   <li class="list-inline-item">
-                    <h5 class="font-weight-bold mb-0 d-block">215</h5>
+                    <p class="font-weight-bold mb-0 d-block">215</p>
                     <small class="text-muted">
                       {" "}
                       <i class="fas fa-image mr-1"></i>Photos
                     </small>
                   </li>
                   <li class="list-inline-item">
-                    <h5 class="font-weight-bold mb-0 d-block">745</h5>
+                    <p class="font-weight-bold mb-0 d-block">745</p>
                     <small class="text-muted">
                       {" "}
                       <i class="fas fa-user mr-1"></i>Followers
                     </small>
                   </li>
                   <li class="list-inline-item">
-                    <h5 class="font-weight-bold mb-0 d-block">340</h5>
+                    <p class="font-weight-bold mb-0 d-block">340</p>
                     <small class="text-muted">
                       {" "}
                       <i class="fas fa-user mr-1"></i>Following

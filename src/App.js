@@ -11,7 +11,7 @@ import Main from "./components/pages/create-profile/Main";
 
 export default () => {
   return (
-    <div style={{ fontFamily: "Fantasy", overflow: "hidden" }}>
+    <div style={{ overflow: "hidden" }}>
       <AuthProvider>
         <Header />
         <Router>
