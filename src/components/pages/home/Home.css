@@ -1,0 +1,9 @@
+.masthead {
+  padding-top: 25px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -9999;
+  background-image: url("https://source.unsplash.com/BtbjCFUvBXs/1920x1080");
+}
+

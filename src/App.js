@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Header from "./components/header/Header";
+import Home from "./components/pages/home/Home";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { AuthProvider } from "./components/contexts/AuthContext";
+import Signup from "./components/signup/Signup";
+import Login from "./components/login/Login";
+import PrivateRoute from "./components/contexts/PrivateRoute";
+import Profile from "./components/pages/profile/Profile";
+import Main from "./components/pages/create-profile/Main";
 
-function App() {
+export default () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={{ fontFamily: "Fantasy", overflow: "hidden" }}>
+      <AuthProvider>
+        <Header />
+        <Router>
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/home" component={Home} />
+            <Route exact path="/sign-up" component={Signup} />
+            <Route exact path="/login" component={Login} />
+            <PrivateRoute exact path="/create-profile" component={Main} />
+            <PrivateRoute exact path="/profile" component={Profile} />
+          </Switch>
+        </Router>
+      </AuthProvider>
     </div>
   );
-}
-
-export default App;
+};
