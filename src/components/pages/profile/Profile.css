@@ -1,21 +1,29 @@
-.profile-head {
-  transform: translateY(5rem);
-}
-
-.cover {
-  background-image: url(https://images.unsplash.com/photo-1530305408560-82d13781b33a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1352&q=80);
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
 .profile-main {
-  background: #654ea3;
-  background: linear-gradient(to right, #e96443, #904e95);
-  min-height: 100vh;
+  background: url("https://image.freepik.com/free-vector/instagram-background-gradient-colors_23-2147821882.jpg")
+    no-repeat center center;
+  background-size: 1400px 700px;
+  background-position: 100%;
+  background-attachment: fixed;
+  margin-top: 120px;
+  color: whitesmoke;
+  padding-bottom: 100px;
+  font-family: "Oswald", sans-serif;
+  letter-spacing: 0.05rem;
+  font-size: 1.5rem;
+  font-weight: 300;
+}
+.image:hover {
+  box-shadow: 0px 5px 20px 0.9px #3f3f3f;
 }
 
-@media only screen and (max-width: 600px) {
-  .profile-main {
-    font-size: small;
-  }
+.image:hover {
+  -webkit-transform: scale(1.12);
+  transform: scale(1.12);
+  -webkit-transition: 1.6s ease-in-out;
+  transition: 1.6s ease-in-out;
+}
+.profile-card-body {
+  background: transparent;
+  color: whitesmoke;
+  font-family: "Oswald", sans-serif;
 }

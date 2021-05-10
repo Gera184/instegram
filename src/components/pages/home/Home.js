@@ -34,7 +34,7 @@ export default function Home() {
         <div class="container text-center align-self-center">
           <div class="row">
             <div class="col">
-              <h2>Latest users</h2>
+              <h1>Latest users</h1>
             </div>
           </div>
           <div class="row">
