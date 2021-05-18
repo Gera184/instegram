@@ -1,13 +1,35 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
+import { db } from "../../firebase.js";
+import { useParams } from "react-router-dom";
+const UserProfile = () => {
+  const [profile, setProfile] = useState();
+  const { id } = useParams();
 
-export default function UserProfile({ profileImgFileUrl, name, city, about }) {
+  useEffect(() => {
+    getDoc();
+  }, [db]);
+
+  async function getDoc() {
+    db.collection("instegram")
+      .where("uid", "==", id)
+      .orderBy("createdAt")
+      .onSnapshot((querySnapshot) => {
+        const data = querySnapshot.docs.map((doc) => ({
+          id: doc.id,
+          // "..." marge the id above with all the data //
+          ...doc.data(),
+        }));
+        setProfile(data);
+      });
+  }
+
   return (
     <div className="profile-main">
       <div class="container text-center align-self-center">
         <div className="row">
           <div className="col ">
             <img
-              src={profileImgFileUrl}
+              src={profile ? profile[0].profileImgFileUrl : ""}
               alt="..."
               width="120"
               class="mb-2 img-thumbnail image"
@@ -16,7 +38,7 @@ export default function UserProfile({ profileImgFileUrl, name, city, about }) {
         </div>
         <div className="row">
           <div className="col">
-            <h1 class="text-uppercase">{name}</h1>
+            <h1 class="text-uppercase">{profile ? profile[0].name : ""}</h1>
           </div>
         </div>
 
@@ -34,7 +56,7 @@ export default function UserProfile({ profileImgFileUrl, name, city, about }) {
         </p>
         <div class="collapse" id="collapseExample">
           <div class="card profile-card-body">
-            <h2> {about}</h2>
+            <h2> {profile ? profile[0].about : ""}</h2>
           </div>
         </div>
         <p>
@@ -51,10 +73,11 @@ export default function UserProfile({ profileImgFileUrl, name, city, about }) {
         </p>
         <div class="collapse" id="collapseExample2">
           <div class="card profile-card-body">
-            <h2>{city}</h2>
+            <h2>{profile ? profile[0].city : ""}</h2>
           </div>
         </div>
       </div>
     </div>
   );
-}
+};
+export default UserProfile;

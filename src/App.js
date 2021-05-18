@@ -8,6 +8,7 @@ import Login from "./components/login/Login";
 import PrivateRoute from "./components/contexts/PrivateRoute";
 import Profile from "./components/pages/profile/Profile";
 import Main from "./components/pages/create-profile/Main";
+import UserProfile from "./components/pages/user-profile/UserProfile";
 
 export default () => {
   return (
@@ -20,6 +21,9 @@ export default () => {
             <Route exact path="/home" component={Home} />
             <Route exact path="/sign-up" component={Signup} />
             <Route exact path="/login" component={Login} />
+            <Route path="/user-profile/:id">
+              <UserProfile />
+            </Route>
             <PrivateRoute exact path="/create-profile" component={Main} />
             <PrivateRoute exact path="/profile" component={Profile} />
           </Switch>

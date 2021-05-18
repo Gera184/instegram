@@ -1,14 +1,15 @@
 import React, { useState, useEffect, useRef } from "react";
 import Carusel from "../carusel/Carusel";
 import { useAuth } from "../../contexts/AuthContext";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { db } from "../../firebase.js";
 import "./Home.css";
 import UserProfile from "../user-profile/UserProfile";
 
 export default function Home() {
   const [profileImgs, setProfileImgs] = useState([]);
-  const [requested_user_uid, setRequested_user_uid] = useState();
   const [user_index, setUser_index] = useState("");
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (db) {
@@ -28,25 +29,11 @@ export default function Home() {
     }
   }, [db]);
 
-  // const hundleOnSubmit = () => {
-  //   db.collection("instegram")
-  //     .where(
-  //       "uid",
-  //       "==",
-  //       profileImgs[user_index] ? profileImgs[user_index].uid : ""
-  //     )
-  //     .orderBy("createdAt")
-  //     .onSnapshot((querySnapshot) => {
-  //       const data = querySnapshot.docs.map((doc) => ({
-  //         id: doc.id,
-  //         // "..." marge the id above with all the data //
-  //         ...doc.data(),
-  //       }));
-  //       setRequested_user_uid(data);
-  //     });
-  // };
-
-  console.log(profileImgs[user_index]);
+  if (loading === true) {
+    window.location.href = `/user-profile/${
+      profileImgs ? profileImgs[user_index].uid : " "
+    }`;
+  }
 
   return (
     <>
@@ -70,20 +57,12 @@ export default function Home() {
                   data-index={index}
                   onClick={(e) => {
                     setUser_index(e.target.getAttribute("data-index"));
+                    setLoading(true);
                   }}
                 />
               </div>
             ))}
           </div>
-        </div>
-
-        <div>
-          <UserProfile
-            profileImgFileUrl={profileImgs[user_index]?.profileImgFileUrl}
-            name={profileImgs[user_index]?.name}
-            city={profileImgs[user_index]?.city}
-            about={profileImgs[user_index]?.about}
-          />
         </div>
       </section>
     </>

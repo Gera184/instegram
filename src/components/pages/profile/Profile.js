@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { db } from "../../firebase.js";
 import { Link, useHistory } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
-import { Accordion, Card, Button } from "react-bootstrap";
+
 import "./Profile.css";
 
 export default function Profile() {
@@ -29,7 +29,9 @@ export default function Profile() {
       });
   }
 
-  console.log(users);
+  if (users.length === 0) {
+    window.location.href = "/create-profile";
+  }
 
   return (
     <>
