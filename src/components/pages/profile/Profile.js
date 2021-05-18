@@ -29,9 +29,9 @@ export default function Profile() {
       });
   }
 
-  if (users.length === 0) {
-    window.location.href = "/create-profile";
-  }
+  // if (users.length === 0) {
+  //   window.location.href = "/create-profile";
+  // }
 
   return (
     <>
